@@ -15,6 +15,10 @@ class CarreraController extends Controller
     public function index()
     {
         //
+        $carreras = Carrera::all();
+        // dd($carreras);///hace un or die
+        // return view('carrera.indexCarrera');
+        return view('carrera.indexCarrera',compact('carreras'));//hace refencia al indexCarrera.blade.php y pasa el objeto carrera
     }
 
     /**
@@ -25,6 +29,7 @@ class CarreraController extends Controller
     public function create()
     {
         //
+        return view('carrera.formCarrera');//hace refencia al formCarrera.blade.php
     }
 
     /**
@@ -36,6 +41,17 @@ class CarreraController extends Controller
     public function store(Request $request)
     {
         //
+        // dd('procesa formulario');
+        // dd($request);
+
+        Carrera::create($request->input());
+
+        // $carrera = new Carrera();
+        // $carrera->carrera = $request->input('carrera');
+        // $carrera->save();
+
+
+        return redirect()->action('CarreraController@index');
     }
 
     /**
