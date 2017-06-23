@@ -14,15 +14,19 @@
                         <input type="text" name="carrera">
                         <input type="submit" name="enviar">
                     </form> -->
-
-                    {!! Form::open(['route' => 'carrera.store']) !!}
+                    @if(isset($carrera))
+                        {!! Form::model($carrera, ['route' => ['carrera.update',$carrera->id], 'method' => 'patch']) !!}
+                    @else
+                        {!! Form::open(['route' => 'carrera.store']) !!}
+                    @endif
                         <!-- <label>carrera</label> -->
                         {!! Form::label('carrera', 'Carrera') !!}
                         <!-- <input type="text" name="carrera"> -->
-                        {!! Form::text('carrera') !!}
+                        {!! Form::text('carrera', null) !!}
                         <!-- <input type="submit" name="enviar"> -->
                         {!! Form::submit('aceptar') !!}
                     {!! Form::close() !!}
+
                 </div>
             </div>
         </div>
