@@ -10,29 +10,43 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                        <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
+                            <label for="nombre" class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="nombre" type="text" class="form-control" name="nombre" value="{{ old('nombre') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('nombre'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('nombre') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group{{ $errors->has('codigo') ? ' has-error' : '' }}">
+                            <label for="codigo" class="col-md-4 control-label">Codigo</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="codigo" type="text" class="form-control" name="codigo" value="{{ old('codigo') }}" required autofocus>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('codigo'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('codigo') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('correo') ? ' has-error' : '' }}">
+                            <label for="correo" class="col-md-4 control-label">Correo</label>
+
+                            <div class="col-md-6">
+                                <input id="correo" type="email" class="form-control" name="correo" value="{{ old('correo') }}" required>
+
+                                @if ($errors->has('correo'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('correo') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -57,6 +71,40 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('rol') ? ' has-error' : '' }}">
+                            <label for="rol" class="col-md-4 control-label">Rol</label>
+
+                            <div class="col-md-6">
+                                <select name="rol" class="form-control">
+                                    <option value="Prestador">Prestador</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
+                                <!-- <input id="rol" type="text" class="form-control" name="rol" value="{{ old('rol') }}" required autofocus> -->
+                                @if ($errors->has('rol'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('rol') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('carrera_id') ? ' has-error' : '' }}">
+                            <label for="carrera_id" class="col-md-4 control-label">Carreras</label>
+
+                            <div name="carrera_id" class="col-md-6">
+                                <select name="carrera_id" class="form-control">
+                                    @foreach(\App\Carrera::all() as $carrera)
+                                        <option value=" {{ $carrera->id }} ">{{ $carrera->carrera }}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('carrera_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('carrera_id') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
