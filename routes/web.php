@@ -22,3 +22,4 @@ Route::resource('/carrera','CarreraController');
 // Route::get('/carrera','CarreraController@index');
 // Route::get('/carrera/create','CarreraController@create');
 // Route::post('/carrera/create','CarreraController@store');
+Route::resource('/usuario','UserController');
