@@ -31,12 +31,12 @@
                     @endif
                     Que onda vato
                     <br>
-                    <!-- <a href="/carrera/create" class="btn btn-success">nueva carrera</a> -->
-                    <!-- <a href="{{ action('CarreraController@create') }}" class="btn btn-success">nueva carrera</a> -->
                     <a href="{{ route('carrera.create') }}" class="btn btn-success">nueva carrera</a>
                     <br>
-                    <!-- <a href="{{ route('carrera.show', $carrera->id) }}" class="btn btn-success">mostrar carrera</a> -->
-                    <!-- <a href="{{ route('carrera.show', $carrera->id) }}">mostrar carrera</a> -->
+                    <!-- <a href="/carrera/create" class="btn btn-success">nueva carrera</a>
+                    <a href="{{ action('CarreraController@create') }}" class="btn btn-success">nueva carrera</a>
+                    <a href="{{ route('carrera.create') }}" class="btn btn-success">mostrar carrera</a>
+                    <a href="{{ route('carrera.create') }}">mostrar carrera</a> -->
 
                 </div>
             </div>

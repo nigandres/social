@@ -90,7 +90,9 @@ class CarreraController extends Controller
     public function update(Request $request, Carrera $carrera)
     {
         //
-        $this->validate($request, ['carrera' => 'required|max:255|unique:carrera']);
+        // dd($carrera);
+        $this->validate($request, ['carrera' => 'required|max:255|unique:carreras']);
+        // dd($carrera);
         $carrera->carrera = $request->input('carrera');
         $carrera->save();
         return redirect()->route('carrera.show', $carrera->id);
