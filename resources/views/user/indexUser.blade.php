@@ -30,7 +30,7 @@
                                     <td>{{ $user->rol }}</td>
                                     <td>{{ $user->user }}</td>
                                     <td>
-                                        <a href="" class="btn btn-success">mostrar usuarios</a>
+                                        <a href="{{ route('usuario.show', $user->id) }}" class="btn btn-success">mostrar usuarios</a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -53,12 +53,9 @@ class UserController extends Controller
         //
         $user = User::find($id);
         // $programas = Programa::all();
-        $programas = Programa::get(['id','nombre']);
+        $programas = Programa::get()->pluck('nombre','id')->toArray();
         // dd($programas);
-        foreach ($programas as $programa) {
-            $arrProgramas[] = $programa['nombre'];
-        }
-        return view('user.showUser', compact('user','arrProgramas'));
+        return view('user.showUser', compact('user','programas'));
     }
 
     /**

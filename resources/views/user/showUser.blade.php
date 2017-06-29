@@ -8,7 +8,7 @@
                 <div class="panel-heading">informacion de carreras</div>
 
                 <div class="panel-body">
-                    <table width="150">
+                    <table>
                         <thead>
                             <th>ID</th>
                             <th>codigo</th>
@@ -19,6 +19,14 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->codigo }}</td>
                                 <td>{{ $user->nombre }}</td>
+                                <td>{{ $user->correo }}</td>
+                                <td>{{ $user->rol }}</td>
+                                <td>{{ $user->carrera->carrera }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    Programa: {{ ($user->programas()->first() !== null) ? $user->programas()->first()->nombre : 'Te la pelas' }} 
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -30,20 +38,12 @@
 
      <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form>
-                <label>seleciona un programa</label>
-                <select class="form-control">
-                    
-                        <?php 
-                            for($i = 0;$i < 3;$i++)
-                            {
-                                echo "<option>" 
-                                    echo $arrProgramas[$i];
-                                echo "</option>";
-                            }
-                        ?>
-                </select>
-            </form>
+            {!! Form::open(['action' => 'AdminUsuarioController@asociarPrograma']) !!}
+            {!! Form::label('programa_id', 'Seleccioea',['class' => '']) !!}
+            {!! Form::select('programa_id',$programas,null,['class' => 'form-control']) !!}
+            {!! Form::hidden('user_id',$user->id) !!}
+            {!! Form::submit('Enviar',['class' => 'btn btn-default']) !!}
+            {!! Form::close() !!}
         </div>
     </div>
 

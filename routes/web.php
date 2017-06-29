@@ -23,4 +23,5 @@ Route::resource('/carrera','CarreraController');
 // Route::get('/carrera/create','CarreraController@create');
 // Route::post('/carrera/create','CarreraController@store');
 Route::resource('/usuario','UserController');
+Route::resource('/programa','ProgramaController');
 Route::post('/admin-usuario/asociar-programa','AdminUsuarioController@asociarPrograma');
