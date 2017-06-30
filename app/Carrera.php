@@ -13,4 +13,8 @@ class Carrera extends Model
     {
     	return $this->hasMany('App\User');
     }
+    public function setCarreraAttribute($value)
+    {
+    	$this->attributes['carrera'] = strtoupper($value);
+    }
 }

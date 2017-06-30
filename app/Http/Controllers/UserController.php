@@ -16,7 +16,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::all()->load('carrera');//el parametro es el metodo user.php
+        // $users = User::all()->load('carrera');//el parametro es el metodo user.php
+        $users = User::with('carrera')->get();//el parametro es el metodo user.php
         // dd($users);
         return view('user.indexUser',compact('users'));//hace refencia al indexUser.blade.php y pasa el objeto users
     }

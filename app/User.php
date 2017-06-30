@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    protected $appends = ['numero_programas'];
 
     /**
      * The attributes that are mass assignable.
@@ -35,5 +36,15 @@ class User extends Authenticatable
     {
         // return $this->belongsToMany('App\Programa')->withPivot('');
         return $this->belongsToMany('App\Programa');
+    }
+    public function getUsuarioCorreoAttribute()
+    {
+        return $this->nombre.' '.$this->correo;
+    }
+    public function getNumeroProgramasAttribute()
+    {
+        $noProgramas = count($this->programas()->get());
+        // dd($noProgramas);
+        return $noProgramas;
     }
 }

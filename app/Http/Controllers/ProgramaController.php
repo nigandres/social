@@ -12,7 +12,7 @@ class ProgramaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($rol = null)
     {
         //
         // $programas = Programa::all()->load('users');//carga relacion de tabla con ususarios
@@ -22,10 +22,23 @@ class ProgramaController extends Controller
         // $programas = Programa::where('nombre','!=','CTA')->where('horario','4 - 9')->get();
         // $programas = Programa::whereIn('nombre',['Finanzas','CTA'])->get();
         // $programas = Programa::whereIn('nombre',['Finanzas','CTA'])->with('users')->get();
-        // $programas = Programa::with(['users' => function($query){ $query->where('rol','Admin'); }])->get();//lo pasa como arreglo
+        // $programas = Programa::with(['users' => function($query){ $query->where('rol','Amin'); }])->get();//lo pasa como arreglo
         // $programas = Programa::whereHas('users',function($query){ $query->where('rol','Prestadores'); })->get();
-        $programas = Programa::whereHas('users',function($query){ $query->where('rol','Admin'); })->get();//lo pasa como objeto
+        // $programas = Programa::whereHas('users',function($query){ $query->where('rol','Admin'); })->get();//lo pasa como objeto
         // dd($programas);
+        //crear un tipo de solicitud con el modelo y la vista
+        // if($rol == 'Prestador') {
+        //     // $programas = Programa::with(['users' => function($query){ $query->where('rol','Prestador'); }])->get();//lo pasa como arreglo
+        // } elseif($rol == 'Admin') {
+        //     $programas = Programa::with(['users' => function($query){ $query->where('rol','Admin'); }])->get();//lo pasa como arreglo
+        // } else {
+        //     $programas = Programa::all()->load('users');//carga relacion de tabla con ususarios
+        // }
+        if(isset($rol)) {
+            $programas = Programa::Rol($rol)->get();//lo pasa como arreglo
+        } else {
+            $programas = Programa::all()->load('users');//carga relacion de tabla con ususarios
+        }
         return view('programa.indexPrograma',compact('programas'));
     }
 

@@ -17,6 +17,8 @@
                                 <th>CODIGO</th>
                                 <th>CARRERA</th>
                                 <th>ROL</th>
+                                <th>ACCESOR NOMBRE-CORREO</th>
+                                <th>ACCESOR NUMERO-PROGRAMAS</th>
                             </thead>
                             <tbody>
                                 @foreach($users as $user)
@@ -29,6 +31,8 @@
                                     <td>{{ $user->carrera->carrera }}</td>
                                     <td>{{ $user->rol }}</td>
                                     <td>{{ $user->user }}</td>
+                                    <td>{{ $user->usuario_correo }}</td>
+                                    <td>{{ $user->numero_programas }}</td>
                                     <td>
                                         <a href="{{ route('usuario.show', $user->id) }}" class="btn btn-success">mostrar usuarios</a>
                                     </td>

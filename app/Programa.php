@@ -13,4 +13,8 @@ class Programa extends Model
     {
     	return $this->belongsToMany('App\User');
     }
+    public function scopeRol($query,$rol)
+    {
+        return $query->with(['users' => function($query) use ($rol) { $query->where('rol',$rol); }]);
+    }
 }
